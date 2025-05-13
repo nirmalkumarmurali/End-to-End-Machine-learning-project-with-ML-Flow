@@ -10,13 +10,14 @@ class DataTransformation:
 
 
     def train_test_splitting(self):
+        print("Data transformation: train_test_splitting() started...")
         data = pd.read_csv(self.config.data_path)
 
         # Split the data into training and test sets. (0.75, 0.25) split.
         train, test = train_test_split(data)
 
         #  Ensure output directory exists
-        # os.makedirs(self.config.root_dir, exist_ok=True)
+        os.makedirs(self.config.root_dir, exist_ok=True)
 
         train.to_csv(os.path.join(self.config.root_dir, "train.csv"),index = False)
         test.to_csv(os.path.join(self.config.root_dir, "test.csv"),index = False)
